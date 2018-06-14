@@ -9,11 +9,6 @@ import java.util.Scanner;
 
 public class Servidor
 {
-    /**
-     * @todo Implementar InputStream y funcionamiento correcto del servidor, y pensar qué hacer si la lista llega vacía.
-     * @params Una lista de números
-     * @return El producto ( a · b ) de todos los números contenidos en la lista de números recibida.
-     */
     public static void main( String[] args ) throws IOException
     {
         final int   PORT = 3001;
@@ -24,9 +19,12 @@ public class Servidor
 
         ServerSocket listener = new ServerSocket( PORT );
 
+        System.out.println( "Servidor iniciado en le puerto " + PORT );
+
         while ( true )
         {
             Socket socket = listener.accept();
+            System.out.println( "Socket abierto" );
 
             input = new Scanner( new InputStreamReader( socket.getInputStream() ) );
 
@@ -36,6 +34,8 @@ public class Servidor
             }
 
             input.close(); // Forzamos cerrado de flujo de entrada por seguridad
+
+            System.out.println( "Comandos recibidos" );
 
             // Ejecutar comandos en hilo separado
 

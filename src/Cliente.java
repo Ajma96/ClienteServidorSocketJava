@@ -24,6 +24,9 @@ public class Cliente
         try
         {
             clientSocket = new Socket( HOST, PORT );
+
+            System.out.println( "Cliente iniciado" );
+
             output = new PrintWriter( new OutputStreamWriter( clientSocket.getOutputStream() ) );
 
             /*
@@ -33,7 +36,11 @@ public class Cliente
 
             output.write( "ll | grep \".bash\"" );
 
+            System.out.println( "Comando enviado" );
+
             input = new Scanner( new InputStreamReader( clientSocket.getInputStream() ) );
+
+            System.out.println( "Iniciando Scanner (InputStreamReader) para lo arrojado por el servidor" );
 
             while ( input.hasNextLine() )
             {
